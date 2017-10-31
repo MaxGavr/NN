@@ -4,26 +4,26 @@
 #include <vector>
 
 using namespace std;
-using namespace arma;
 
-class ImageSegment {
-  private:
+class Segment
+{
+private:
     int startX;
     int startY;
 
     vector<double> vectorX;
-    mat X;
+    arma::mat X;
 
-  public:
-    ImageSegment(int startX, int startY);
+public:
+    Segment(int startX, int startY);
 
     void createMatrixX();
 
     void addElement(double newElement);
 
-    int  getStartX() const;
+    int getStartX() const;
 
-    int  getStartY() const;
+    int getStartY() const;
 
-    mat getX() const;
+    arma::mat getX() const;
 };

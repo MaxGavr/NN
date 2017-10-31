@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
 #include <armadillo>
 #include <png++/png.hpp>
@@ -8,10 +7,19 @@
 #include "Rectangle.h"
 
 using namespace std;
-using namespace arma;
 
-class ImageProcessor {
-  private:
+class NeuralNetwork
+{
+    using PngImage = png::image<png::rgb_pixel>;
+    using Pixel = png::rgb_pixel;
+
+public:
+    NeuralNetwork(const char* pathToImage, int n, int m, int p, double e, double a);
+
+    void processImage();
+    void createOutputImage();
+
+private:
     int RGB;
     int imageWidth;
     int imageHeight;
@@ -23,22 +31,20 @@ class ImageProcessor {
     int nmRGB;
     double a;
 
-    vector<ImageSegment> imageSegments;
+    vector<Segment> imageSegments;
 
-    mat W;
-    mat W_;
+    arma::mat W;
+    arma::mat W_;
 
+    Segment readSegment(const PngImage& image, int startX, int startY);
 
-    int convertRGBToOutput(double rgb);
-    double getErrorDegree(mat deltaX);
-    void createWeightMatrix();
     double convertColor(int color);
-    void normalizeMatrix(mat matrix);
+    int convertColorReverse(double rgb);
+
+    void createWeightMatrix();
+
+    double getErrorDegree(arma::mat deltaX);
+
+    void normalizeMatrix(arma::mat matrix);
     void normalizeMatrixs();
-
-  public:
-    ImageProcessor(char const *patch, int n, int m, int p, double e, double a);
-
-    void run();
-    void createOutputImage();
 };

@@ -1,21 +1,18 @@
 #include <iostream>
-#include <vector>
-#include <armadillo>
-
-#include "Rectangle.h"
 #include "ImageProcessor.h"
-#include "Matrix.h"
 
 using namespace std;
-using namespace arma;
 
-int main(int argc, char *argv[]) {
-    if(argc != 2) {
-        std::cout << "Usage: ./NeuralNetwork path/to/image.png" << endl;
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        cout << "Usage: ./NeuralNetwork path/to/image.png" << endl;
         exit(1);
     }
+    srand(time(NULL));
 
-    int n , m;
+    int n, m;
     cout << "Enter height of rectangle (n):" << endl;
     cin >> n;
     cout << "Enter width of rectangle (m):" << endl;
@@ -30,8 +27,8 @@ int main(int argc, char *argv[]) {
     double a;
     cin >> a;
 
-    ImageProcessor processor(argv[1], n, m, p, e, a);
-    processor.run();
+    NeuralNetwork processor(argv[1], n, m, p, e, a);
+    processor.processImage();
     processor.createOutputImage();
     return 0;
 }
