@@ -21,20 +21,20 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="first.png" />
+				<Option parameters="landscape.png" />
 				<Compiler>
 					<Add option="-march=corei7-avx" />
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-fexpensive-optimizations" />
-					<Add option="-flto" />
 					<Add option="-O3" />
 					<Add option="-m64" />
+					<Add option="-flto" />
 				</Compiler>
 				<Linker>
-					<Add option="-O3" />
-					<Add option="-flto" />
 					<Add option="-s" />
 					<Add option="-m64" />
+					<Add option="-O3" />
+					<Add option="-flto" />
 				</Linker>
 			</Target>
 		</Build>
@@ -52,10 +52,8 @@
 			<Add option="-lpng" />
 			<Add option="-fopenmp" />
 		</Linker>
-		<Unit filename="ImageProcessor.cpp" />
-		<Unit filename="ImageProcessor.h" />
-		<Unit filename="Rectangle.cpp" />
-		<Unit filename="Rectangle.h" />
+		<Unit filename="NeuralNetwork.cpp" />
+		<Unit filename="NeuralNetwork.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<DoxyBlocks>
